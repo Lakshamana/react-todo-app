@@ -11,7 +11,9 @@ class AddForm extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
+    this.props.addNewTodo(this.state.todo)
+    this.setState({todo: ''})
+    // document.getElementById('todo').value = '' // use one-way binding towards state instead
   }
 
   render() {
@@ -19,7 +21,7 @@ class AddForm extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <label htmlFor="todo">Add new todo: </label>
-          <input type="text" onChange={this.onChange}/>
+          <input type="text" id="todo" onChange={this.onChange} value={this.state.todo} />
         </form>
       </div>
     )
